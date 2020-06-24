@@ -17,16 +17,7 @@ app.title = "Smart Utrecht Forestry"
 
 ''' Df selection / cleaning'''
 
-df = pd.read_csv("20200127bomen.csv", encoding='latin1')
-
-df = df[["Nederlandse naam", "Wetenschappelijke naam", "Plantjaar", "Leeftijd", "Buurt", "Wijk", "Lat", "Long"]]
-
-df['Leeftijd'] = df['Leeftijd'].replace(2011, 9)
-df['Plantjaar'] = df['Plantjaar'].replace(9, 2011)
-df['Leeftijd'] = df['Leeftijd'].replace(2001, 19)
-df['Plantjaar'] = df['Plantjaar'].replace(19, 2001)
-df.drop(130961, inplace=True)
-df.dropna(inplace=True)
+df = pd.read_csv("Bomen_Clean.csv", encoding='latin1')
 
 mean_ages = pd.read_csv('Mean_Age_Districts.csv')
 mean_ages = mean_ages[['Wijk', 'Mean age']].round(2)
