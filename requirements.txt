@@ -17,7 +17,6 @@ boto==2.49.0
 boto3==1.13.2
 botocore==1.16.2
 brotlipy==0.7.0
-ca-certificates==2020.6.20
 cartopy==0.18.0
 certifi==2020.6.20
 cffi==1.14.0
