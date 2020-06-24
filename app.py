@@ -28,7 +28,7 @@ df['Plantjaar'] = df['Plantjaar'].replace(19, 2001)
 df.drop(130961, inplace=True)
 df.dropna(inplace=True)
 
-mean_ages = pd.read_csv('C:/Users/piete/Documents/HU/DDD/D/Prototype/Iterations/Mean_Age_Districts.csv')
+mean_ages = pd.read_csv('Mean_Age_Districts.csv')
 mean_ages = mean_ages[['Wijk', 'Mean age']].round(2)
 
 soorten_df = df.groupby(["Wijk", "Wetenschappelijke naam"])['Wetenschappelijke naam'].count().to_frame(name = 'Total').reset_index()
