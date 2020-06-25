@@ -32,7 +32,6 @@ setuptools==47.3.1
 six==1.15.0
 toml==0.10.1
 typed-ast==1.4.1
-vs2015_runtime==14.16.27012
 werkzeug==1.0.1
 wheel==0.34.2
 wincertstore==0.2
