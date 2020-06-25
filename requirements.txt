@@ -19,7 +19,6 @@ jinja2==2.11.2
 lazy-object-proxy==1.4.3
 markupsafe==1.1.1
 mccabe==0.6.1
-mkl==2020.0
 numpy==1.18.5
 pandas==1.0.5
 pip==20.1.1
