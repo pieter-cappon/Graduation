@@ -36,4 +36,3 @@ werkzeug==1.0.1
 wheel==0.34.2
 wincertstore==0.2
 wrapt==1.11.2
-yaml==0.2.5
