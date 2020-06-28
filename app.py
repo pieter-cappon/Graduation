@@ -31,7 +31,6 @@ SDI_df = pd.DataFrame(SDI, columns = ['District', 'Value'])
 
 hor_bar = px.bar(SDI_df, x="Value", y="District", orientation='h')
 hor_bar.update_layout(title_text="Simpson's Diversity Index")
-hor_bar.update_layout(yaxis={'visible': False})
 ''' Create graph functions '''
 
 # Distribution of age
@@ -55,63 +54,6 @@ fig.update_layout(mapbox_style="carto-darkmatter", margin={"r":0,"t":0,"l":0,"b"
 treemap = px.treemap(soorten_df, path=['Wijk', 'Wetenschappelijke naam'], values='Total', color_continuous_scale='algae', color='Total')
 treemap.update_layout(title_text='Distribution of species')
 
-# Indicators
-
-# Dot Plot
-
-numoftrees = go.Figure()
-
-numoftrees.add_trace(go.Indicator(
-    mode= "number",
-    value= numofrows,
-    title= {'text': "Aantal bomen"},
-    domain= {'x': [0,0.5], 'y': [0.5,1]}
-))
-
-'''
-numoftrees.add_trace(go.Indicator(
-    mode= "number",
-    value= len(df['Wetenschappelijke naam'].value_counts()),
-    title= {'text': "Aantal soorten"},
-    domain={'x':[0,0.5], 'y': [0,0.5]}
-))
-
-numoftrees.update_layout(
-    font= dict(
-        family="Open Sans",
-))
-
-'''
-
-''' Pages '''
-
-
-'''
-        dbc.Row(
-            [
-                dbc.Col(
-                    html.Div(
-                        dbc.Card(
-                            dbc.CardBody(
-                                [
-                                    html.H5("Slider"),
-                                    dcc.RangeSlider(
-                                        id='age-slider',
-                                        min=df['Leeftijd'].min(),
-                                        max=df['Leeftijd'].max(),
-                                        value=[0,244],
-                                        step=1,
-                                        marks={str(Leeftijd): str(Leeftijd) for Leeftijd in df['Leeftijd'].unique()}
-                                    )  
-                                ]
-                            )
-                        ),
-                    ),
-                    md=12,
-                )
-            ]
-        ),
-        '''
 
 trees = html.Div(
     [
@@ -257,7 +199,7 @@ sidebar = html.Div(
         html.H2("Smart Utrecht Forestry", className="display-4"),
         html.Hr(),
         html.P(
-            "This dashboard displays the urban forestry of Utrecht, use the filters to select a district and get more insight in the urban forestry of this area.", className="lead"
+            "This dashboard displays the urban forestry of Utrecht, select a district and get more insight in the urban forestry of this area.", className="lead"
         ),
         dbc.Nav(
             [
@@ -279,19 +221,7 @@ app.layout = html.Div([dcc.Location(id="url"), sidebar, content])
 
 # this callback uses the current pathname to set the active state of the
 # corresponding nav link to true, allowing users to tell see page they are on
-'''
-@app.callback(
-    [Output('age-map', 'figure')],
-    [Input('age-slider', 'value')],
-)
-def update_map(selected_year):
-    filtered_df = df[df.Leeftijd == selected_year]
-    
-    return {
-    px.scatter_mapbox(filtered_df, lat="Long", lon="Lat", hover_name="Wetenschappelijke naam", hover_data=["Nederlandse naam", "Leeftijd"],
-                     zoom=11, height= 750, color="Leeftijd", color_continuous_scale='Greens', opacity=0.5, mapbox_style="stamen-toner")
-    }
-'''
+
 @app.callback(
     [Output(f"page-{i}-link", "active") for i in range(1, 4)],
     [Input("url", "pathname")],
